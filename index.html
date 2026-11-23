@@ -1,0 +1,829 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Home | Auto Techno Solutions</title><meta name="description" content="Auto Techno Solutions (A Value Added Distribution Company)">
+<link rel="icon" href="https://atsorg.com/wp-content/uploads/2024/01/cropped-favicon-1-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>:root{
+  --navy:#1F2D7A;--navy-2:#18236A;--navy-3:#141D58;--orange:#F57C00;--orange-2:#D96C00;
+  --ink:#0F1435;--text:#373D58;--mute:#646B86;--line:#DFE3EC;--tint:#EEF1F6;--white:#fff;
+  --max:1280px;--pad:clamp(20px,4vw,48px);
+  --h:"Syne",system-ui,sans-serif;--b:"Sora",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font:300 16.5px/1.75 var(--b);color:var(--text);background:var(--white);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:var(--h);color:var(--ink);font-weight:700;letter-spacing:-.015em;line-height:1.08}
+h3,h4{font-family:var(--b);font-weight:600;letter-spacing:-.01em}
+h2{font-size:clamp(30px,3.6vw,52px)}
+h3{font-size:20px;letter-spacing:-.01em}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
+
+/* concept ribbon + utility */
+.concept{background:#000;color:#9A9EA9;font-size:12px;text-align:center;padding:6px 12px}
+.util{background:var(--navy-3);color:#B9BED0;font-size:13px}
+.util .wrap{display:flex;justify-content:space-between;gap:16px;padding-top:9px;padding-bottom:9px}
+.util span:last-child{display:flex;gap:24px}
+.util a:hover{color:#fff}
+
+/* header */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+.hdr.scrolled{box-shadow:0 6px 24px rgba(14,21,56,.07)}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;height:80px;gap:32px}
+.brand img{height:50px;width:auto}
+.nav{display:flex;align-items:center;gap:30px;font-size:15px;font-weight:500;color:var(--ink)}
+.nav>a,.dd>button{position:relative;padding:28px 0;display:flex;align-items:center;gap:6px}
+.nav>a::after,.dd>button::after{content:"";position:absolute;left:0;right:0;bottom:20px;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.nav>a:hover::after,.nav>a[aria-current]::after,.dd:hover>button::after,.dd.is-active>button::after{transform:scaleX(1)}
+.nav>a:last-child{background:var(--orange);color:#fff;padding:12px 22px;border-radius:2px;transition:background .2s}
+.nav>a:last-child::after{display:none}.nav>a:last-child:hover{background:var(--navy)}
+.dd{position:relative}
+.dd-menu{position:absolute;top:100%;left:-20px;min-width:220px;background:#fff;border:1px solid var(--line);border-top:2px solid var(--orange);padding:8px 0;opacity:0;visibility:hidden;transform:translateY(6px);transition:.2s;box-shadow:0 18px 40px rgba(14,21,56,.1)}
+.dd:hover .dd-menu,.dd.open .dd-menu{opacity:1;visibility:visible;transform:none}
+.dd-menu a{display:block;padding:10px 20px}.dd-menu a:hover,.dd-menu a[aria-current]{background:var(--tint);color:var(--orange)}
+.burger{display:none;width:44px;height:44px;position:relative}
+.burger span{position:absolute;left:10px;right:10px;height:2px;background:var(--ink);transition:.3s}
+.burger span:first-child{top:17px}.burger span:last-child{top:25px}
+.menu-open .burger span:first-child{top:21px;transform:rotate(45deg)}.menu-open .burger span:last-child{top:21px;transform:rotate(-45deg)}
+
+/* buttons/links */
+.btn{display:inline-flex;align-items:center;gap:12px;background:var(--orange);color:#fff;font:600 15px var(--b);padding:15px 26px;border-radius:2px;transition:background .2s,color .2s;border:1px solid var(--orange)}
+.btn:hover{background:var(--navy);border-color:var(--navy)}
+.btn svg{transition:transform .25s}.btn:hover svg,.link:hover svg{transform:translateX(4px)}
+.btn.ghost{background:transparent;border-color:rgba(255,255,255,.6)}.btn.ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
+.link{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;color:var(--navy);border-bottom:1px solid currentColor;padding-bottom:3px}
+.link svg{transition:transform .25s}.link:hover{color:var(--orange)}
+.lbl{display:flex;align-items:center;gap:12px;font:600 13px var(--b);letter-spacing:.08em;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.lbl::before{content:"";width:28px;height:2px;background:var(--orange)}
+
+/* hero */
+.hero{position:relative;min-height:calc(100vh - 150px);min-height:min(820px,calc(100svh - 150px));display:flex;flex-direction:column;justify-content:flex-end;color:#fff;overflow:hidden;background:var(--navy-3)}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);animation:kb 14s ease-out forwards}
+@keyframes kb{to{transform:scale(1)}}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,21,56,.9) 0%,rgba(14,21,56,.62) 48%,rgba(14,21,56,.25) 100%)}
+.hero-in{position:relative;padding-bottom:72px;width:100%}
+.hero-pre{font:500 16px var(--b);color:var(--orange);margin-bottom:14px;letter-spacing:.02em}
+.hero h1{color:#fff;font-size:clamp(42px,6.4vw,92px);line-height:1;letter-spacing:-.035em;max-width:11ch}
+.hero-sub{font-size:clamp(17px,1.5vw,21px);color:#D6D9E6;margin:22px 0 36px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-foot{position:relative;display:flex;justify-content:space-between;gap:16px;border-top:1px solid rgba(255,255,255,.2);padding-top:18px;padding-bottom:22px;font-size:13px;color:#AEB4C8;letter-spacing:.04em;text-transform:uppercase;width:100%}
+.hero-in>*{animation:up .9s cubic-bezier(.2,.7,.2,1) both}.hero-in>*:nth-child(2){animation-delay:.08s}.hero-in>*:nth-child(3){animation-delay:.16s}.hero-in>*:nth-child(4){animation-delay:.24s}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+/* sections */
+.sec{padding:clamp(72px,9vw,128px) 0}
+.sec.tint{background:var(--tint)}
+.sec.dark{background:var(--navy-3);color:#B9BED0}.sec.dark h2,.sec.dark h3{color:#fff}.sec.dark .link{color:#fff}
+.sec-head{margin-bottom:clamp(36px,4vw,56px);max-width:760px}
+.sec-head.split{max-width:none;display:grid;grid-template-columns:1fr auto;align-items:end;column-gap:24px}
+.sec-head.split .lbl{grid-column:1/-1}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px)}
+.sol-img{aspect-ratio:16/10;overflow:hidden;margin-bottom:28px;background:var(--tint)}
+.sol-img img,.tile-img img,.seg-img img,.uc-img img,.prod-img img,.person-img img,.vmv img,.pillar img,.gallery img,.tall-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.sol:hover .sol-img img,.tile:hover img,.prod:hover img,.pillar:hover img{transform:scale(1.04)}
+.sol h2{font-size:clamp(24px,2.3vw,32px);margin-bottom:14px}
+.sol p{margin-bottom:24px;max-width:48ch}
+.row-links{display:flex;gap:28px;flex-wrap:wrap}
+
+/* segments */
+.seg{display:grid;grid-template-columns:340px 1fr;gap:clamp(28px,4vw,64px);align-items:start}
+.seg-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.seg-list button{display:flex;gap:18px;align-items:baseline;text-align:left;padding:20px 0;border-bottom:1px solid var(--line);font:500 18px var(--h);color:var(--mute);transition:color .2s,padding .3s}
+.seg-list button span{font:500 13px var(--b);color:var(--mute)}
+.seg-list button:hover{color:var(--ink)}
+.seg-list button[aria-selected=true]{color:var(--ink);padding-left:12px;box-shadow:inset 3px 0 0 var(--orange)}
+.seg-list button[aria-selected=true] span{color:var(--orange)}
+.seg-view{position:relative}
+.seg-pane{display:none;grid-template-columns:1.25fr 1fr;gap:clamp(24px,3vw,44px);align-items:center}
+.seg-pane.on{display:grid;animation:fade .5s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.seg-img{aspect-ratio:4/3;overflow:hidden;background:#E8E8E4}
+.seg-txt h3{font-size:clamp(24px,2.2vw,30px);margin-bottom:12px}
+.seg-txt>p{color:var(--mute);margin-bottom:20px}
+.seg-txt ul,.checks{list-style:none;margin-bottom:28px}
+.seg-txt li,.checks li{position:relative;padding:11px 0 11px 30px;border-top:1px solid var(--line);color:var(--ink)}
+.seg-txt li::before,.checks li::before{content:"";position:absolute;left:2px;top:21px;width:14px;height:2px;background:var(--orange)}
+
+/* tiles */
+.tiles{display:grid;gap:clamp(18px,2vw,28px)}
+.tiles.c4{grid-template-columns:repeat(4,1fr)}.tiles.c3{grid-template-columns:repeat(3,1fr)}
+.tile{display:flex;flex-direction:column}
+.tile-img{aspect-ratio:4/3;overflow:hidden;margin-bottom:16px;background:#E8E8E4}
+.sec.dark .tile-img{background:var(--navy-2)}
+.tile h3{font-size:18px;line-height:1.3;margin-bottom:10px;flex:1}
+.tile .more{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--orange)}
+.tile .more svg{transition:transform .25s}.tile:hover .more svg{transform:translateX(4px)}
+.tiles.c4 .tile:first-child{grid-column:span 2;grid-row:span 2}
+.tiles.c4 .tile:first-child .tile-img{aspect-ratio:auto;flex:1}
+.tiles.c4 .tile:first-child h3{flex:0;font-size:22px}
+
+/* statement */
+.statement{background:var(--orange);color:#fff;padding:clamp(64px,8vw,110px) 0}
+.statement p{font:500 clamp(26px,3.4vw,48px)/1.18 var(--h);letter-spacing:-.025em;max-width:24ch}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink)}
+.stat{padding:28px 28px 0 0}
+.stat+.stat{padding-left:28px;border-left:1px solid var(--line)}
+.stat b{display:block;font:600 clamp(44px,5vw,72px)/1 var(--h);color:var(--navy);letter-spacing:-.04em;margin-bottom:14px}
+.stat p{font-size:15px;color:var(--mute);max-width:22ch}
+
+/* partners */
+.logos{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);background:#fff}
+.logo-cell{display:flex;align-items:center;justify-content:center;aspect-ratio:3/2;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px}
+.logo-cell img{max-height:78%;width:auto;object-fit:contain;filter:grayscale(1);opacity:.75;transition:.3s;mix-blend-mode:multiply}
+.logo-cell:hover img{filter:none;opacity:1}
+
+/* page head */
+.phead{position:relative;padding:clamp(56px,8vw,110px) 0 clamp(48px,6vw,80px);background:var(--navy-3);color:#fff;overflow:hidden}
+.phead.has-img{padding-top:clamp(90px,12vw,170px)}
+.ph-bg{position:absolute;inset:0}.ph-bg img{width:100%;height:100%;object-fit:cover}
+.ph-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,21,56,.92),rgba(14,21,56,.55))}
+.phead .wrap{position:relative}
+.crumb{font-size:13px;color:#9AA0B8;margin-bottom:22px;letter-spacing:.03em}.crumb a:hover{color:#fff}
+.phead h1{color:#fff;font-size:clamp(38px,5vw,68px);letter-spacing:-.035em;line-height:1.02}
+.phead-sub{font-size:clamp(17px,1.5vw,20px);color:#CBD0E0;max-width:56ch;margin-top:20px}
+
+/* about */
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:start}
+.intro h2{font-size:clamp(24px,2.4vw,34px)}
+.lead{font-size:18px;line-height:1.7;color:var(--text)}
+.two-img{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:center}
+.two-img h2{font-size:clamp(24px,2.4vw,34px);margin-bottom:26px}
+.tall-img{aspect-ratio:4/5;overflow:hidden;background:#E8E8E4}
+.exp{display:flex;align-items:center;gap:24px;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);padding:20px 0;margin:6px 0 24px}
+.exp p{font-size:15px;color:var(--mute);max-width:24ch}
+.exp b{font:600 clamp(34px,3.4vw,48px)/1 var(--h);color:var(--navy);letter-spacing:-.03em;white-space:nowrap}
+.two-img.rev{margin-bottom:64px}
+.vmv{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.4vw,36px)}
+.vmv img{aspect-ratio:3/2;height:auto;margin-bottom:24px;background:#E8E8E4}
+.vmv h3{font-size:22px;margin-bottom:10px;padding-top:16px;border-top:2px solid var(--orange);display:inline-block}
+.vmv p{font-size:16.5px}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12)}
+.pillar{background:var(--navy-3);overflow:hidden}
+.pillar img{aspect-ratio:16/11;height:auto;opacity:.82}
+.pillar h3{font-size:17px;padding:18px 20px 22px;display:flex;gap:12px;align-items:baseline}
+.pillar h3 span{font:500 12px var(--b);color:var(--orange)}
+
+/* use cases */
+.uc-jump{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.uc-jump h4{font-size:14px;color:var(--mute);font-family:var(--b);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+.uc-jump a{display:flex;justify-content:space-between;padding:14px 0;border-top:1px solid var(--line);font:500 17px var(--h);color:var(--ink)}
+.uc-jump a::after{content:"↓";color:var(--orange)}.uc-jump a:hover{color:var(--orange)}
+.uc{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center;padding:clamp(36px,4vw,56px) 0;border-top:1px solid var(--line);scroll-margin-top:110px}
+.uc.rev .uc-img{order:2}
+.uc-img{aspect-ratio:4/3;overflow:hidden;background:#E8E8E4}
+.uc-n{font:500 13px var(--b);color:var(--orange);display:block;margin-bottom:10px}
+.uc h3{font-size:clamp(22px,2.1vw,30px);margin-bottom:16px}
+.uc p{font-size:16.5px;margin-bottom:12px}.uc p b{color:var(--ink)}
+.cta{background:var(--navy);padding:clamp(56px,7vw,96px) 0}
+.cta .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.cta h2{color:#fff}
+
+/* products */
+.brand-chip{background:#fff;border:1px solid var(--line);padding:10px 16px;display:flex;align-items:center}
+.brand-chip img{height:38px;width:auto}
+.prods{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,28px)}
+.prod-img{aspect-ratio:1;overflow:hidden;background:var(--tint);border:1px solid var(--line)}
+.prod-img img{object-fit:contain;padding:8%}
+.prod figcaption{display:flex;gap:12px;align-items:baseline;padding-top:14px;font:500 17px var(--h);color:var(--ink)}
+.prod figcaption span{font:500 12px var(--b);color:var(--orange)}
+
+/* media */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:clamp(180px,20vw,280px);gap:clamp(12px,1.6vw,20px)}
+.gallery figure{overflow:hidden;background:#E8E8E4}.gallery .g1{grid-row:span 2}
+
+/* careers / contact */
+.roles{border-top:2px solid var(--ink)}
+.role{display:flex;gap:20px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
+.role-ic{width:56px;height:56px;flex:0 0 56px;background:var(--tint);display:flex;align-items:center;justify-content:center}
+.role-ic img{width:30px;height:30px}
+.role h3{font-size:19px;margin-bottom:2px}.role p{font-size:15px;color:var(--mute)}
+.form{display:flex;flex-direction:column;gap:18px}
+.form.card{background:var(--tint);padding:clamp(24px,3vw,40px)}
+.form h3{font-size:22px;margin-bottom:4px}
+.form label{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:500;color:var(--ink)}
+.form input,.form textarea{font:inherit;font-size:16px;padding:13px 14px;border:1px solid #CDD0D8;background:#fff;border-radius:0;color:var(--ink);transition:border-color .2s}
+.form input:focus,.form textarea:focus{outline:0;border-color:var(--navy);box-shadow:0 0 0 3px rgba(29,42,107,.1)}
+.form .btn{align-self:flex-start}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.sent{font-size:14px;color:#1F7A45}
+.contact{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(32px,5vw,80px)}
+.contact-side{border-top:2px solid var(--ink)}
+.contact-side div{padding:20px 0;border-bottom:1px solid var(--line)}
+.contact-side h4{font:600 13px var(--b);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+.contact-side a{display:block;font:500 18px var(--h);color:var(--ink);margin-top:4px}.contact-side a:hover{color:var(--orange)}
+
+/* team */
+.team{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.4vw,32px)}
+.person-img{aspect-ratio:4/5;overflow:hidden;background:#E8E8E4;margin-bottom:18px}
+.person-img img{filter:grayscale(.2)}
+.person:hover .person-img img{transform:scale(1.03);filter:none}
+.person h3{font-size:20px;margin-bottom:4px}.person p{font-size:15px;color:var(--mute)}
+
+/* footer */
+.ftr{background:var(--navy-3);color:#9AA0B8;font-size:15px;padding-top:clamp(56px,7vw,90px)}
+.ftr-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px;padding-bottom:56px}
+.ftr-brand img{height:56px;width:auto;background:#fff;padding:8px 12px;margin-bottom:22px}
+.ftr-brand a{color:#fff;font:500 17px/1.9 var(--h)}
+.ftr h4{font:600 13px var(--b);letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:16px}
+.ftr-top div>a:not(.brand){display:block;padding:5px 0}.ftr a:hover{color:var(--orange)!important}
+.ftr-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.1);padding:22px 0 30px;font-size:13.5px}
+.soc{display:flex;gap:22px}
+
+/* reveal */
+.js .fx{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .fx.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .fx{opacity:1;transform:none;transition:none}.hero-bg img,.hero-in>*{animation:none}}
+
+/* responsive */
+@media (max-width:1080px){
+  .nav{gap:20px;font-size:14px}
+  .tiles.c4{grid-template-columns:repeat(2,1fr)}
+  .prods,.team{grid-template-columns:repeat(3,1fr)}
+  .pillars{grid-template-columns:repeat(2,1fr)}
+  .seg{grid-template-columns:1fr}.seg-list{flex-direction:row;overflow-x:auto;border-top:0;gap:0;border-bottom:1px solid var(--line)}
+  .seg-list button{white-space:nowrap;padding:14px 18px;border:0;font-size:15px}
+  .seg-list button[aria-selected=true]{padding-left:18px;box-shadow:inset 0 -3px 0 var(--orange)}
+}
+@media (max-width:860px){
+  .util span:first-child{display:none}.util .wrap{justify-content:center}
+  .hdr-in{height:68px}.brand img{height:42px}
+  .burger{display:block}
+  .nav{position:fixed;inset:68px 0 0 0;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:12px var(--pad) 40px;font-size:18px;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.7,.2,1);overflow:auto}
+  .menu-open .nav{transform:none}
+  .nav>a,.dd>button{padding:16px 0;border-bottom:1px solid var(--line);width:100%}
+  .nav>a::after,.dd>button::after{display:none}
+  .nav>a:last-child{margin-top:20px;justify-content:center;padding:16px}
+  .dd-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;padding:0 0 8px 16px;display:none}
+  .dd.open .dd-menu{display:block}
+  .two,.intro,.two-img,.uc,.contact,.uc-jump,.seg-pane{grid-template-columns:1fr}
+  .uc.rev .uc-img{order:0}
+  .tiles.c3{grid-template-columns:1fr}
+  .tiles.c4 .tile:first-child{grid-column:span 2;grid-row:auto}.tiles.c4 .tile:first-child .tile-img{aspect-ratio:16/10}
+  .stats{grid-template-columns:1fr 1fr}.stat:nth-child(3){padding-left:0;border-left:0}.stat{padding-bottom:24px}
+  .logos{grid-template-columns:repeat(3,1fr)}
+  .vmv,.f2{grid-template-columns:1fr}
+  .ftr-top{grid-template-columns:1fr 1fr}.ftr-brand{grid-column:1/-1}
+  .hero-foot span:last-child{display:none}
+  .sec-head.split{grid-template-columns:1fr}.sec-head.split .link{margin-top:16px;justify-self:start}
+  .gallery{grid-template-columns:1fr 1fr}
+  .tall-img{aspect-ratio:4/3}
+}
+@media (max-width:560px){
+  .tiles.c4,.prods,.team{grid-template-columns:1fr 1fr}
+  .tiles.c4 .tile h3{font-size:15px}
+  .prod figcaption{font-size:15px}
+  .pillars{grid-template-columns:1fr 1fr}.pillar h3{font-size:15px;padding:14px}
+  .logos{grid-template-columns:repeat(2,1fr)}
+}
+.tiles.c4 .tile:nth-child(n+6){grid-column:span 2}
+.tiles.c4 .tile:nth-child(n+6) .tile-img{aspect-ratio:16/7}
+@media (max-width:860px){.tiles.c4 .tile:nth-child(n+6){grid-column:span 1}.tiles.c4 .tile:nth-child(n+6) .tile-img{aspect-ratio:4/3}.tiles.c4 .tile:nth-child(7){grid-column:span 2}.tiles.c4 .tile:nth-child(7) .tile-img{aspect-ratio:16/9}}
+
+/* ================= v4 ================= */
+.lbl{display:none}
+.js .fx{opacity:1;transform:none;transition:none}
+b,strong{font-weight:600}
+.btn{border-radius:999px;padding:15px 30px;font-family:var(--b);font-weight:500}
+.btn.line{background:transparent;border-color:currentColor;color:inherit}
+.btn.line:hover{background:#fff;color:var(--navy-3);border-color:#fff}
+.link{border-bottom-width:1.5px;font-family:var(--b)}
+.kicker{font:500 15px var(--b);color:var(--orange);margin-bottom:12px}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+.nav{font-family:var(--b)}
+.nav>a:last-child{border-radius:999px}
+
+/* header over the 3D stage */
+.hdr.over{background:transparent;border-color:rgba(255,255,255,.1);position:absolute;left:0;right:0;top:auto}
+.hdr.over .nav,.hdr.over .burger{color:#fff}.hdr.over .burger span{background:#fff}
+.hdr.over .brand{background:#fff;border-radius:12px;padding:6px 12px}
+.hdr.over .brand img{height:40px}
+.hdr.over.scrolled{box-shadow:none}
+body:has(.hdr.over) .util{position:relative;z-index:51}
+
+/* 3D stage */
+.r3{height:460vh;position:relative;background:radial-gradient(120% 80% at 78% 30%,#2A3C9C 0%,#1A2671 38%,#121A52 100%);color:#fff}
+.r3::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.r3-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.r3 canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity 1.2s}
+.r3.ready canvas{opacity:1}
+.r3-copy{position:relative;height:100%;display:flex;flex-direction:column;justify-content:center;pointer-events:none;padding-top:80px}
+.r3-step{position:absolute;max-width:520px;opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;pointer-events:none}
+.r3-step.on{opacity:1;transform:none;pointer-events:auto}
+.r3-hero{max-width:620px}
+.hero-pre{font:400 17px var(--b);color:#FFB566;margin-bottom:18px}
+.kin{font:800 clamp(52px,7.4vw,116px)/.92 var(--h);letter-spacing:-.04em;color:#fff;margin-bottom:26px}
+.kin .w{display:inline-block;white-space:nowrap}
+.kin .ch{display:inline-block;transform:translateY(105%) rotate(6deg);opacity:0;animation:ch .9s cubic-bezier(.2,.8,.2,1) var(--d) forwards}
+@keyframes ch{to{transform:none;opacity:1}}
+.r3 .hero-sub{color:#C9D0EE;font-size:clamp(16px,1.4vw,19px);margin-bottom:36px}
+.r3-step h2{color:#fff;font-size:clamp(40px,4.6vw,72px);margin-bottom:22px}
+.r3-list{list-style:none;columns:1;font:400 17px/1.4 var(--b);color:#DDE2F6;margin-bottom:28px}
+.r3-list.two-col{columns:2;column-gap:28px}
+.r3-list li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.12);break-inside:avoid}
+.r3 .link{color:#fff}
+.r3-labels{position:absolute;inset:0;pointer-events:none}
+.r3-lab{position:absolute;left:0;top:0;opacity:0;transition:opacity .4s;pointer-events:none;color:#fff}
+.r3-lab.on{opacity:1;pointer-events:auto}.r3-lab.on.dim{opacity:.28}
+.r3-lab i{position:absolute;left:-4px;top:-4px;width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 5px rgba(245,124,0,.2)}
+.r3-lab::before{content:"";position:absolute;left:4px;top:0;width:26px;height:1px;background:rgba(255,255,255,.5)}
+.r3-lab b{position:absolute;left:36px;top:-22px;white-space:nowrap;font:600 15px var(--b)}
+.r3-lab span{position:absolute;left:36px;top:-1px;white-space:nowrap;font-size:12.5px;color:#AEB7DD}
+.r3-lab:hover b,.r3-lab.hi b{color:#FFB566}
+.r3-tag{position:absolute;left:var(--pad);bottom:32px;font:600 14px var(--b);color:#AEB7DD}
+@media(min-width:1380px){.r3-tag{left:calc((100vw - var(--max))/2 + var(--pad))}}
+.r3-bar{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.08)}.r3-bar span{display:block;height:100%;width:0;background:var(--orange)}
+
+/* sections */
+.sec.steel{background:var(--tint)}
+.sec.navy{background:var(--navy-3);color:#C9D0EE}.sec.navy h2,.sec.navy h3{color:#fff}.sec.navy .link{color:#fff}
+.sec.navy .tile-img{background:var(--navy-2)}
+.sols .sol-img{border-radius:22px;aspect-ratio:5/4}
+.sols .sol.offset{margin-top:clamp(0px,10vw,140px)}
+.sol h2{font-size:clamp(26px,2.6vw,38px)}
+.seg-list button{font-family:var(--h);font-weight:700;font-size:21px}
+.seg-img{border-radius:20px}
+.tile-img{border-radius:16px}
+.uc-img,.tall-img,.vmv img,.person-img,.prod-img,.gallery figure{border-radius:18px}
+
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:clamp(150px,14vw,210px);gap:16px}
+.bt{position:relative;border-radius:20px;overflow:hidden;color:#fff;isolation:isolate;background:var(--navy-2)}
+.bt-img{position:absolute;inset:0;z-index:-1}.bt-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.bt::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(15,20,53,0) 40%,rgba(15,20,53,.85))}
+.bt:hover .bt-img img{transform:scale(1.05)}
+.bt-cap{position:absolute;left:22px;right:22px;bottom:18px}
+.bt-cap h3{color:#fff;font-size:clamp(16px,1.4vw,21px);line-height:1.25;margin-bottom:6px}
+.bt .more{font-size:13.5px;color:#FFB566;font-weight:500;opacity:0;transform:translateY(6px);transition:.3s}
+.bt:hover .more,.bt:focus-visible .more{opacity:1;transform:none}
+.bento{grid-template-areas:"a a a b b b" "a a a c c c" "d d e e f f" "g g g g g g"}
+.bt0{grid-area:a}.bt1{grid-area:b}.bt2{grid-area:c}.bt3{grid-area:d}.bt4{grid-area:e}.bt5{grid-area:f}.bt6{grid-area:g}
+
+/* statement */
+.statement{background:var(--orange)}
+.statement p{font:700 clamp(30px,4.4vw,66px)/1.08 var(--h);letter-spacing:-.03em;max-width:20ch}
+.statement .wd{opacity:.28;transition:opacity .25s}.statement .wd.lit{opacity:1}
+
+/* stats */
+.stats{border-top-color:var(--navy)}
+.stat b{font-family:var(--h);font-weight:800;color:var(--navy)}
+
+/* partners marquee */
+.partners{padding-bottom:clamp(72px,9vw,120px)}
+.mq{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mq-track{display:flex;gap:18px;width:max-content;animation:mq 42s linear infinite}
+.mq:hover .mq-track{animation-play-state:paused}
+.mq-item{flex:0 0 auto;width:clamp(170px,16vw,230px);aspect-ratio:3/2;background:#fff;border:1px solid var(--line);border-radius:18px;display:flex;align-items:center;justify-content:center;padding:20px}
+.mq-item img{max-height:80%;width:auto;object-fit:contain}
+@keyframes mq{to{transform:translateX(calc(-50% - 9px))}}
+
+/* page heads */
+.phead{background:radial-gradient(120% 90% at 80% 20%,#2A3C9C,#141D58 65%)}
+.ph-bg::after{background:linear-gradient(90deg,rgba(20,29,88,.94),rgba(20,29,88,.55))}
+.phead h1{font-family:var(--h);font-weight:800;font-size:clamp(44px,6vw,88px);letter-spacing:-.04em}
+.ftr{background:#0F1640}
+.ftr-brand img{border-radius:12px}
+
+@media (prefers-reduced-motion:reduce){.kin .ch{animation:none;transform:none;opacity:1}.mq-track{animation:none}}
+@media(max-width:860px){
+  .r3{height:420vh}
+  .r3-copy{justify-content:flex-start;padding-top:150px}
+  .r3-step{left:var(--pad);right:var(--pad);max-width:none}
+  .kin{font-size:clamp(46px,13vw,64px)}
+  .r3-step h2{font-size:38px;margin-bottom:12px}
+  .r3-list{font-size:14.5px}.r3-list li{padding:5px 0}
+  .r3-lab span{display:none}.r3-lab b{font-size:13px}.r3-tag{display:none}
+  .hdr.over .brand img{height:34px}
+  .sols .sol.offset{margin-top:0}
+  .bento{grid-template-columns:1fr 1fr;grid-template-areas:"a a" "b c" "d e" "f g";grid-auto-rows:190px}
+  .bt-cap{left:14px;right:14px;bottom:12px}.bt .more{opacity:1;transform:none}
+}
+.ftr h4,.contact-side h4,.uc-jump h4,.util{text-transform:none;letter-spacing:0}
+.ftr h4{font-size:15px}.contact-side h4,.uc-jump h4{font-size:14px}
+.hero-foot{text-transform:none;letter-spacing:0}
+.phead h1{overflow-wrap:break-word;hyphens:manual;max-width:100%}
+@media(max-width:560px){.phead h1{font-size:clamp(34px,10vw,48px)}}
+.two>*,.team>*,.prods>*,.stats>*,.contact>*,.intro>*,.two-img>*{min-width:0}
+.form input,.form textarea{width:100%;min-width:0}
+.soc{flex-wrap:wrap;gap:10px 22px}
+@media(max-width:400px){.stat{padding-right:12px}.stat+.stat{padding-left:12px}.stat b{font-size:40px}}
+</style></head><body>
+<div class="concept">Website redesign concept by eStride for Auto Techno Solutions. Not the live site.</div>
+<div class="util"><div class="wrap"><span>A Value Added Distribution Company</span><span><a href="tel:+919987999986">Phone: +91 99879 99986</a><a href="mailto:saikiran@atsorg.com">saikiran@atsorg.com</a></span></div></div>
+<header class="hdr over"><div class="wrap hdr-in">
+<a class="brand" href="index.html" aria-label="Auto Techno Solutions home"><img src="https://atsorg.com/wp-content/uploads/2023/05/ATS_logo-19-removebg-preview-e1704699871280.png" alt="ATS — Delivering the Best" loading="eager" decoding="async"></a>
+<nav class="nav" aria-label="Main"><a href="index.html" aria-current=page>Home</a><a href="about.html">About Us</a><a href="use-cases.html">Use cases</a><div class="dd"><button type="button" aria-expanded="false">Products<svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button><div class="dd-menu"><a href="install-audio.html">Install Audio</a><a href="video-transport.html">Video Transport</a></div></div><a href="media.html">Media/Event/Newsletters</a><a href="careers.html">Careers</a><a href="contact.html">Contact Us</a></nav>
+<button class="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+</div></header><main>
+<section class="r3"><div class="r3-stage">
+  <canvas aria-label="3D rack of Auto Techno Solutions products. Units slide out as you scroll; select one to open its product page."></canvas>
+  <div class="r3-labels"></div>
+  <div class="wrap r3-copy">
+    <div class="r3-step r3-hero on">
+      <p class="hero-pre">Welcome To</p>
+      <h1 class="kin" aria-label="Auto Techno Solutions"><span class="w"><span class="ch" style="--d:0ms">A</span><span class="ch" style="--d:28ms">u</span><span class="ch" style="--d:56ms">t</span><span class="ch" style="--d:84ms">o</span></span> <span class="w"><span class="ch" style="--d:196ms">T</span><span class="ch" style="--d:224ms">e</span><span class="ch" style="--d:252ms">c</span><span class="ch" style="--d:280ms">h</span><span class="ch" style="--d:308ms">n</span><span class="ch" style="--d:336ms">o</span></span> <span class="w"><span class="ch" style="--d:392ms">S</span><span class="ch" style="--d:420ms">o</span><span class="ch" style="--d:448ms">l</span><span class="ch" style="--d:476ms">u</span><span class="ch" style="--d:504ms">t</span><span class="ch" style="--d:532ms">i</span><span class="ch" style="--d:560ms">o</span><span class="ch" style="--d:588ms">n</span><span class="ch" style="--d:616ms">s</span></span> </h1>
+      <p class="hero-sub">(A Value Added Distribution Company)</p>
+      <div class="hero-cta"><a class="btn" href="about.html">Learn More</a><a class="btn line" href="contact.html">Contact Us</a></div>
+    </div>
+    <div class="r3-step"><h2>Video Transport</h2><ul class="r3-list"><li>Switcher</li><li>Splitter</li><li>Matrix Switcher</li><li>Processor</li><li>Extender</li><li>Wireless Presenter</li><li>Controller</li></ul><a class="link" href="video-transport.html">Products</a></div>
+    <div class="r3-step"><h2>Install Audio</h2><ul class="r3-list two-col"><li>Weatherproof Speakers</li><li>Ceiling Speakers</li><li>Column Arrays</li><li>Pendant Speakers</li><li>Professional PA</li><li>Install Amplifier</li><li>Mixing Amplifier</li><li>DSP</li><li>Wireless Microphones</li><li>Mounts</li></ul><a class="link" href="install-audio.html">Products</a></div>
+  </div>
+  <p class="r3-tag">Delivering the Best</p>
+  <div class="r3-bar"><span></span></div>
+</div></section>
+
+<section class="sec sols"><div class="wrap two">
+  <article class="sol">
+    <div class="sol-img"><img src="https://atsorg.com/wp-content/uploads/2023/12/person-using-ai-tool-job.jpg" alt="Audio Visual Solutions" loading="lazy" decoding="async"></div>
+    <p class="kicker">Audio Visual Solutions</p>
+    <h2>Empowering Businesses with Intelligent AV Solutions</h2>
+    <p>Revolutionize your business with state-of-the-art AV solutions designed for efficiency.</p>
+    <div class="row-links"><a class="link" href="about.html">About us</a><a class="link" href="contact.html">Contact Us</a></div>
+  </article>
+  <article class="sol offset">
+    <div class="sol-img"><img src="https://atsorg.com/wp-content/uploads/2023/12/luxury-office-chair-modern-glass-building-generated-by-ai.jpg" alt="Automation Solutions" loading="lazy" decoding="async"></div>
+    <p class="kicker">Automation Solutions</p>
+    <h2>Smart Living, Effortless Automation</h2>
+    <p>Transform your lifestyle with intelligent automation solutions that make daily tasks a breeze.</p>
+    <div class="row-links"><a class="link" href="use-cases.html">Our Services</a><a class="link" href="contact.html">Contact Us</a></div>
+  </article>
+</div></section>
+
+<section class="sec steel"><div class="wrap">
+  <div class="sec-head"><h2>Our Product Segments</h2></div>
+  <div class="seg" data-tabs><div class="seg-list" role="tablist"><button type="button" role="tab" aria-selected="true" data-i="0">Corporate Boardrooms</button><button type="button" role="tab" aria-selected="false" data-i="1">Executive Boardrooms</button><button type="button" role="tab" aria-selected="false" data-i="2">Huddle Rooms</button><button type="button" role="tab" aria-selected="false" data-i="3">Auditorium</button><button type="button" role="tab" aria-selected="false" data-i="4">Digital Cafeterias</button><button type="button" role="tab" aria-selected="false" data-i="5">Unified Communication</button></div><div class="seg-view"><div class="seg-pane on" role="tabpanel" data-i="0">
+<div class="seg-img"><img src="https://atsorg.com/wp-content/uploads/2024/01/Corporate-Boardrooms.jpg" alt="Corporate Boardrooms" loading="lazy" decoding="async"></div>
+<div class="seg-txt"><h3>Corporate Boardrooms</h3><p>Easily adaptable to accommodate different meeting sizes and formats.</p>
+<a class="link" href="use-cases.html#board-huddle">Learn More </a></div></div><div class="seg-pane" role="tabpanel" data-i="1">
+<div class="seg-img"><img src="https://atsorg.com/wp-content/uploads/2024/01/Board-rooms.jpg" alt="Executive Boardrooms" loading="lazy" decoding="async"></div>
+<div class="seg-txt"><h3>Executive Boardrooms</h3><p>This system is meticulously crafted to elevate your boardroom experience</p><ul><li>Seamless Meetings, Impeccable Control</li><li>Smart Leadership, Smarter Solutions</li><li>Strategic Efficiency, Executive Style</li><li>Innovate. Collaborate. Dominate</li></ul>
+<a class="link" href="use-cases.html#board-huddle">Learn More </a></div></div><div class="seg-pane" role="tabpanel" data-i="2">
+<div class="seg-img"><img src="https://atsorg.com/wp-content/uploads/2024/01/Collaboration.jpg" alt="Huddle Rooms" loading="lazy" decoding="async"></div>
+<div class="seg-txt"><h3>Huddle Rooms</h3><p>communication in a compact and comfortable environment.</p><ul><li>Spontaneous Brilliance Unleashed</li><li>Connect, Create, Collaborate</li><li>Swift Solutions, Intimate Setting</li><li>Compact Spaces, Grand Ideas</li></ul>
+<a class="link" href="use-cases.html#board-huddle">Learn More </a></div></div><div class="seg-pane" role="tabpanel" data-i="3">
+<div class="seg-img"><img src="https://atsorg.com/wp-content/uploads/2024/01/Auditorium-1.jpg" alt="Auditorium" loading="lazy" decoding="async"></div>
+<div class="seg-txt"><h3>Auditorium</h3><p>Designed to enhance the overall experience</p><ul><li>Automated Audio-Visual Integration</li><li>Intelligent Stage Automation</li><li>Real-Time Audience Engagement</li><li>Centralized Control Hub</li></ul>
+<a class="link" href="use-cases.html#hall-large">Learn More </a></div></div><div class="seg-pane" role="tabpanel" data-i="4">
+<div class="seg-img"><img src="https://atsorg.com/wp-content/uploads/2024/01/cafetarea-new.jpg" alt="Digital Cafeterias" loading="lazy" decoding="async"></div>
+<div class="seg-txt"><h3>Digital Cafeterias</h3><p>we specializes in transforming traditional cafeterias into versatile</p><ul><li>Technology meets culinary excellence</li><li>Innovation meets seamless efficiency</li><li>Elevate your dining experience</li><li>Efficiency meets indulgence</li></ul>
+<a class="link" href="use-cases.html#command-training">Learn More </a></div></div><div class="seg-pane" role="tabpanel" data-i="5">
+<div class="seg-img"><img src="https://atsorg.com/wp-content/uploads/2024/01/conference.jpg" alt="Unified Communication" loading="lazy" decoding="async"></div>
+<div class="seg-txt"><h3>Unified Communication</h3><p>Creating user-friendly interfaces for digital products.</p><ul><li>Seamless collaboration, amplified efficiency</li><li>Effortless connections</li><li>Elevated productivity</li><li>collaboration, and convenience converge.</li></ul>
+<a class="link" href="use-cases.html#board-huddle">Learn More </a></div></div></div></div>
+</div></section>
+
+<section class="sec" id="install-av"><div class="wrap">
+  <div class="sec-head split"><h2>Install AV</h2><a class="link" href="use-cases.html#install-av">Use cases</a></div>
+  <div class="bento"><a class="bt bt0" href="use-cases.html#board-huddle"><div class="bt-img"><img src="https://atsorg.com/wp-content/uploads/2024/01/Board-rooms.jpg" alt="Board room &amp; Conference room" loading="lazy" decoding="async"></div><div class="bt-cap"><h3>Board room & Conference room</h3><span class="more">Know More</span></div></a><a class="bt bt1" href="use-cases.html#board-huddle"><div class="bt-img"><img src="https://atsorg.com/wp-content/uploads/2024/01/Collaboration.jpg" alt="Huddle room &amp; Collaboration space" loading="lazy" decoding="async"></div><div class="bt-cap"><h3>Huddle room & Collaboration space</h3><span class="more">Know More</span></div></a><a class="bt bt2" href="use-cases.html#command-training"><div class="bt-img"><img src="https://atsorg.com/wp-content/uploads/2024/01/noc-soc.jpg" alt="NOC, SOC, &amp; Command centre" loading="lazy" decoding="async"></div><div class="bt-cap"><h3>NOC, SOC, & Command centre</h3><span class="more">Know More</span></div></a><a class="bt bt3" href="use-cases.html#lounges-experience"><div class="bt-img"><img src="https://atsorg.com/wp-content/uploads/2024/01/Experience-1.jpg" alt="Experience Centre" loading="lazy" decoding="async"></div><div class="bt-cap"><h3>Experience Centre</h3><span class="more">Know More</span></div></a><a class="bt bt4" href="use-cases.html#hall-large"><div class="bt-img"><img src="https://atsorg.com/wp-content/uploads/2024/01/Auditorium-1.jpg" alt="Multipurpose hall, Auditorium and Large venue" loading="lazy" decoding="async"></div><div class="bt-cap"><h3>Multipurpose hall, Auditorium and Large venue</h3><span class="more">Know More</span></div></a><a class="bt bt5" href="use-cases.html#command-training"><div class="bt-img"><img src="https://atsorg.com/wp-content/uploads/2024/01/Training-rooms-new.jpg" alt="Training room &amp; Cafeteria" loading="lazy" decoding="async"></div><div class="bt-cap"><h3>Training room & Cafeteria</h3><span class="more">Know More</span></div></a><a class="bt bt6" href="use-cases.html#lounges-experience"><div class="bt-img"><img src="https://atsorg.com/wp-content/uploads/2024/01/Lounges.jpg" alt="Lounge and Hospitality" loading="lazy" decoding="async"></div><div class="bt-cap"><h3>Lounge and Hospitality</h3><span class="more">Know More</span></div></a></div>
+</div></section>
+
+<section class="sec navy"><div class="wrap">
+  <div class="sec-head split"><h2>Staging and Rental</h2><a class="link" href="use-cases.html#rental-staging">Know More</a></div>
+  <div class="tiles c3"><a class="tile fx" href="use-cases.html#audio-lighting"><div class="tile-img"><img src="https://atsorg.com/wp-content/uploads/2024/01/lighting.jpg" alt="Lighting" loading="lazy" decoding="async"></div><h3>Lighting</h3><span class="more">Know More</span></a><a class="tile fx" href="use-cases.html#audio-lighting"><div class="tile-img"><img src="https://atsorg.com/wp-content/uploads/2024/01/audio.jpg" alt="Audio - Touring &amp; Portable" loading="lazy" decoding="async"></div><h3>Audio - Touring & Portable</h3><span class="more">Know More</span></a><a class="tile fx" href="use-cases.html#live-display"><div class="tile-img"><img src="https://atsorg.com/wp-content/uploads/2024/01/Live-Displays.jpg" alt="Live Display" loading="lazy" decoding="async"></div><h3>Live Display</h3><span class="more">Know More</span></a></div>
+</div></section>
+
+<section class="statement"><div class="wrap"><p data-words>Simplifying your journey to success by means of a Smart and reliable delivery mechanism</p></div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="sec-head"><h2>Why ATS ?</h2></div>
+  <div class="stats"><div class="stat fx"><b><span data-count="20">20</span>+</b><p>Years of Experience In The Audio-visual integration</p></div><div class="stat fx"><b><span data-count="705">705</span>+</b><p>Satisfied Clients We Have Served</p></div><div class="stat fx"><b><span data-count="280">280</span>+</b><p>Recognitions Over Two Decades</p></div><div class="stat fx"><b><span data-count="75">75</span>+</b><p>Awards & Certifications Of Our Work</p></div></div>
+</div></section>
+
+<section class="sec partners"><div class="wrap"><div class="sec-head"><h2>Our Value Added Partners</h2></div></div>
+  <div class="mq" aria-label="Our Value Added Partners"><div class="mq-track"><a class="mq-item" href="https://www.amcpro.eu/en" target=_blank rel=noopener><img src="https://atsorg.com/wp-content/uploads/2024/01/amc.jpg" alt="AMC" loading="lazy" decoding="async"></a><a class="mq-item" href="https://www.sy.co.uk/" target=_blank rel=noopener><img src="https://atsorg.com/wp-content/uploads/2024/03/tile_fill_Logo_450x300.jpg" alt="SY Electronics" loading="lazy" decoding="async"></a><a class="mq-item" href="https://www.loudofsweden.com/" target=_blank rel=noopener><img src="https://atsorg.com/wp-content/uploads/2024/01/loud.jpg" alt="LOUD of Sweden" loading="lazy" decoding="async"></a><a class="mq-item" href="https://plexusav.com/" target=_blank rel=noopener><img src="https://atsorg.com/wp-content/uploads/2024/01/plexus-av.jpg" alt="Plexus AV" loading="lazy" decoding="async"></a><a class="mq-item" href="https://www.analogway.com/" target=_blank rel=noopener><img src="https://atsorg.com/wp-content/uploads/2024/01/analog-way.jpg" alt="Analog Way" loading="lazy" decoding="async"></a><a class="mq-item" href="#"><img src="https://atsorg.com/wp-content/uploads/2024/01/boom.jpg" alt="Boom" loading="lazy" decoding="async"></a><a class="mq-item" href="https://www.blueparrott.com/" target=_blank rel=noopener><img src="https://atsorg.com/wp-content/uploads/2024/01/blue-parrot.jpg" alt="BlueParrott" loading="lazy" decoding="async"></a><a class="mq-item" href="https://gobright.com/" target=_blank rel=noopener><img src="https://atsorg.com/wp-content/uploads/2024/01/go-bright.jpg" alt="GoBright" loading="lazy" decoding="async"></a><a class="mq-item" href="https://birddog.tv/" target=_blank rel=noopener><img src="https://atsorg.com/wp-content/uploads/2024/01/birddog.jpg" alt="BirdDog" loading="lazy" decoding="async"></a><a class="mq-item" href="https://www.netvio.co.uk/" target=_blank rel=noopener><img src="https://atsorg.com/wp-content/uploads/2024/01/netvio.jpg" alt="Netvio" loading="lazy" decoding="async"></a><a aria-hidden="true" tabindex="-1" class="mq-item" href="https://www.amcpro.eu/en" target=_blank rel=noopener><img src="https://atsorg.com/wp-content/uploads/2024/01/amc.jpg" alt="AMC" loading="lazy" decoding="async"></a><a aria-hidden="true" tabindex="-1" class="mq-item" href="https://www.sy.co.uk/" target=_blank rel=noopener><img src="https://atsorg.com/wp-content/uploads/2024/03/tile_fill_Logo_450x300.jpg" alt="SY Electronics" loading="lazy" decoding="async"></a><a aria-hidden="true" tabindex="-1" class="mq-item" href="https://www.loudofsweden.com/" target=_blank rel=noopener><img src="https://atsorg.com/wp-content/uploads/2024/01/loud.jpg" alt="LOUD of Sweden" loading="lazy" decoding="async"></a><a aria-hidden="true" tabindex="-1" class="mq-item" href="https://plexusav.com/" target=_blank rel=noopener><img src="https://atsorg.com/wp-content/uploads/2024/01/plexus-av.jpg" alt="Plexus AV" loading="lazy" decoding="async"></a><a aria-hidden="true" tabindex="-1" class="mq-item" href="https://www.analogway.com/" target=_blank rel=noopener><img src="https://atsorg.com/wp-content/uploads/2024/01/analog-way.jpg" alt="Analog Way" loading="lazy" decoding="async"></a><a aria-hidden="true" tabindex="-1" class="mq-item" href="#"><img src="https://atsorg.com/wp-content/uploads/2024/01/boom.jpg" alt="Boom" loading="lazy" decoding="async"></a><a aria-hidden="true" tabindex="-1" class="mq-item" href="https://www.blueparrott.com/" target=_blank rel=noopener><img src="https://atsorg.com/wp-content/uploads/2024/01/blue-parrot.jpg" alt="BlueParrott" loading="lazy" decoding="async"></a><a aria-hidden="true" tabindex="-1" class="mq-item" href="https://gobright.com/" target=_blank rel=noopener><img src="https://atsorg.com/wp-content/uploads/2024/01/go-bright.jpg" alt="GoBright" loading="lazy" decoding="async"></a><a aria-hidden="true" tabindex="-1" class="mq-item" href="https://birddog.tv/" target=_blank rel=noopener><img src="https://atsorg.com/wp-content/uploads/2024/01/birddog.jpg" alt="BirdDog" loading="lazy" decoding="async"></a><a aria-hidden="true" tabindex="-1" class="mq-item" href="https://www.netvio.co.uk/" target=_blank rel=noopener><img src="https://atsorg.com/wp-content/uploads/2024/01/netvio.jpg" alt="Netvio" loading="lazy" decoding="async"></a></div></div>
+</section>
+</main><footer class="ftr"><div class="wrap">
+<div class="ftr-top">
+<div class="ftr-brand"><img src="https://atsorg.com/wp-content/uploads/2023/05/ATS_logo-19-removebg-preview-e1704699871280.png" alt="ATS — Delivering the Best" loading="lazy" decoding="async">
+<p><a href="mailto:info@atsorg.com">info@atsorg.com</a><br><a href="tel:+919987999986">+91 99879 99986</a></p></div>
+<div><h4>Products</h4><a href="install-audio.html">Install Audio</a><a href="video-transport.html">Video Transport</a></div>
+<div><h4>Use cases</h4><a href="use-cases.html#install-av">Install AV</a><a href="use-cases.html#rental-staging">Rental &amp; Staging</a></div>
+<div><h4>Useful Links</h4><a href="about.html">About Us</a><a href="team.html">Team</a><a href="contact.html">Contact Us</a></div>
+</div>
+<div class="ftr-bot"><span>© 2026 by AuTo avi Solutions LLP</span><span class="soc"><a href="https://www.facebook.com/atsorgofficial" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/atsorgofficial/" target="_blank" rel="noopener">Instagram</a><a href="http://linkedin.com/company/atsorg/" target="_blank" rel="noopener">LinkedIn</a><a href="https://wa.me/+919987999986/?text=I%27m%20inquiring%20about%20products" target="_blank" rel="noopener">WhatsApp</a></span></div>
+</div></footer><script>document.documentElement.classList.add('js');
+(() => {
+  const hdr = document.querySelector('.hdr');
+  const onS = () => hdr.classList.toggle('scrolled', scrollY > 8);
+  addEventListener('scroll', onS, { passive: true }); onS();
+
+  const burger = document.querySelector('.burger');
+  burger.addEventListener('click', () => {
+    const o = document.body.classList.toggle('menu-open');
+    burger.setAttribute('aria-expanded', o);
+  });
+  document.querySelectorAll('.dd > button').forEach(b => b.addEventListener('click', () => {
+    const o = b.parentElement.classList.toggle('open'); b.setAttribute('aria-expanded', o);
+  }));
+
+  // reveal
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.fx').forEach((el, i) => {
+    const sib = [...el.parentElement.children].filter(c => c.classList.contains('fx'));
+    el.style.transitionDelay = Math.min(sib.indexOf(el), 5) * 70 + 'ms';
+    io.observe(el);
+  });
+
+  // counters
+  const co = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return; co.unobserve(e.target);
+    const el = e.target, to = +el.dataset.count, t0 = performance.now();
+    const step = t => { const p = Math.min(1, (t - t0) / 1400), v = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(to * v); if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }), { threshold: .6 });
+  document.querySelectorAll('[data-count]').forEach(el => co.observe(el));
+
+  // segment tabs
+  document.querySelectorAll('[data-tabs]').forEach(w => {
+    const tabs = [...w.querySelectorAll('[role=tab]')], panes = [...w.querySelectorAll('[role=tabpanel]')];
+    const go = i => { tabs.forEach((t, k) => t.setAttribute('aria-selected', k === i)); panes.forEach((p, k) => p.classList.toggle('on', k === i)); };
+    tabs.forEach((t, i) => { t.addEventListener('click', () => go(i)); t.addEventListener('keydown', e => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); go((i + 1) % tabs.length); tabs[(i + 1) % tabs.length].focus(); }
+      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); go((i - 1 + tabs.length) % tabs.length); tabs[(i - 1 + tabs.length) % tabs.length].focus(); }
+    }); });
+  });
+
+  // demo forms
+  document.querySelectorAll('form[data-demo]').forEach(f => f.addEventListener('submit', e => {
+    e.preventDefault(); f.querySelector('.sent').hidden = false; f.reset();
+  }));
+})();
+// statement words light up with scroll
+document.querySelectorAll('[data-words]').forEach(p => {
+  p.innerHTML = p.textContent.trim().split(/\s+/).map(w => `<span class="wd">${w}</span>`).join(' ');
+  const ws = [...p.querySelectorAll('.wd')];
+  const upd = () => { const r = p.getBoundingClientRect(), vh = innerHeight;
+    const t = Math.min(1, Math.max(0, (vh * .85 - r.top) / (vh * .6)));
+    ws.forEach((w, i) => w.classList.toggle('lit', i < t * ws.length + .5)); };
+  addEventListener('scroll', upd, { passive: true }); upd();
+});
+</script><script>/* ATS concept · real-time 3D DSP, exploded on scroll.
+   Tiny hand-written WebGL renderer: no libraries, nothing to download. */
+(() => {
+const stage = document.querySelector('.r3');
+if (!stage) return;
+const canvas = stage.querySelector('canvas');
+const gl = canvas.getContext('webgl', { antialias: true, alpha: true, premultipliedAlpha: false });
+if (!gl) { stage.classList.add('nogl'); return; }
+
+/* ---------- math ---------- */
+const M4 = {
+  id: () => [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1],
+  mul(a, b) { const o = new Array(16); for (let c = 0; c < 4; c++) for (let r = 0; r < 4; r++) { let s = 0; for (let k = 0; k < 4; k++) s += a[k*4+r] * b[c*4+k]; o[c*4+r] = s; } return o; },
+  persp(f, asp, n, fa) { const t = 1 / Math.tan(f / 2); return [t/asp,0,0,0, 0,t,0,0, 0,0,(fa+n)/(n-fa),-1, 0,0,2*fa*n/(n-fa),0]; },
+  look(e, c, u) {
+    let z = norm(sub(e, c)), x = norm(cross(u, z)), y = cross(z, x);
+    return [x[0],y[0],z[0],0, x[1],y[1],z[1],0, x[2],y[2],z[2],0, -dot(x,e),-dot(y,e),-dot(z,e),1];
+  },
+};
+const sub = (a, b) => [a[0]-b[0], a[1]-b[1], a[2]-b[2]];
+const dot = (a, b) => a[0]*b[0] + a[1]*b[1] + a[2]*b[2];
+const cross = (a, b) => [a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0]];
+const norm = a => { const l = Math.hypot(...a) || 1; return [a[0]/l, a[1]/l, a[2]/l]; };
+const hex = h => [parseInt(h.slice(1,3),16)/255, parseInt(h.slice(3,5),16)/255, parseInt(h.slice(5,7),16)/255];
+const sm = (p, a, b) => { const t = Math.min(1, Math.max(0, (p - a) / (b - a))); return t * t * (3 - 2 * t); };
+const lerp = (a, b, t) => a + (b - a) * t;
+
+/* ---------- shaders ---------- */
+const VS = `attribute vec3 aP;attribute vec3 aN;uniform mat4 uVP,uM;uniform mat3 uNM;varying vec3 vN,vW;
+void main(){vec4 w=uM*vec4(aP,1.);vW=w.xyz;vN=normalize(uNM*aN);gl_Position=uVP*w;}`;
+const FS = `precision mediump float;varying vec3 vN,vW;uniform vec3 uC,uEye,uHiC;uniform float uMet,uEm,uHi;
+void main(){vec3 n=normalize(vN),v=normalize(uEye-vW);
+vec3 L1=normalize(vec3(.55,.9,.6)),L2=normalize(vec3(-.8,.35,.2)),L3=normalize(vec3(-.2,.4,-1.));
+float d=max(dot(n,L1),0.)*.95+max(dot(n,L2),0.)*.28+max(dot(n,L3),0.)*.45;
+float hemi=mix(.16,.34,n.y*.5+.5);
+float s=pow(max(dot(n,normalize(L1+v)),0.),mix(18.,70.,uMet))*mix(.12,.9,uMet);
+float rim=pow(1.-max(dot(n,v),0.),3.)*.22;
+vec3 c=uC*(hemi+d)+vec3(s)+rim*vec3(.6,.7,.9);
+c=mix(c,uC*1.6,uEm);c+=uHiC*uHi*(.18+rim*2.);
+gl_FragColor=vec4(pow(c,vec3(.92)),1.);}`;
+const PFS = `precision mediump float;uniform vec3 uId;void main(){gl_FragColor=vec4(uId,1.);}`;
+const SVS = `attribute vec3 aP;uniform mat4 uVP;uniform vec3 uS;varying vec2 vU;void main(){vU=aP.xz;gl_Position=uVP*vec4(aP.x*uS.x,uS.y,aP.z*uS.z,1.);}`;
+const SFS = `precision mediump float;varying vec2 vU;uniform float uA;void main(){float r=length(vU);gl_FragColor=vec4(0.,0.,0.,uA*smoothstep(1.,.05,r));}`;
+function prog(vs, fs) {
+  const p = gl.createProgram();
+  for (const [t, src] of [[gl.VERTEX_SHADER, vs], [gl.FRAGMENT_SHADER, fs]]) {
+    const s = gl.createShader(t); gl.shaderSource(s, src); gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw gl.getShaderInfoLog(s);
+    gl.attachShader(p, s);
+  }
+  gl.linkProgram(p); return p;
+}
+const P = prog(VS, FS), PP = prog(VS, PFS), SP = prog(SVS, SFS);
+const loc = (p, n) => gl.getUniformLocation(p, n);
+
+/* ---------- geometry ---------- */
+function buf(pos, nor, idx) {
+  const b = { n: idx.length };
+  b.p = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b.p); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(pos), gl.STATIC_DRAW);
+  b.nn = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b.nn); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(nor), gl.STATIC_DRAW);
+  b.i = gl.createBuffer(); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, b.i); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(idx), gl.STATIC_DRAW);
+  return b;
+}
+const BOX = (() => {
+  const P = [], N = [], I = [];
+  const f = [[[1,0,0],[0,1,0],[0,0,1]],[[-1,0,0],[0,1,0],[0,0,-1]],[[0,1,0],[0,0,1],[1,0,0]],[[0,-1,0],[0,0,-1],[1,0,0]],[[0,0,1],[1,0,0],[0,1,0]],[[0,0,-1],[-1,0,0],[0,1,0]]];
+  f.forEach(([n, u, v], k) => {
+    for (const [a, b] of [[-1,-1],[1,-1],[1,1],[-1,1]]) { P.push(.5*(n[0]+a*u[0]+b*v[0]), .5*(n[1]+a*u[1]+b*v[1]), .5*(n[2]+a*u[2]+b*v[2])); N.push(...n); }
+    I.push(k*4, k*4+1, k*4+2, k*4, k*4+2, k*4+3);
+  });
+  return buf(P, N, I);
+})();
+const CYL = (() => {
+  const P = [], N = [], I = [], S = 28;
+  for (let i = 0; i <= S; i++) { const a = i / S * Math.PI * 2, x = Math.cos(a) * .5, z = Math.sin(a) * .5;
+    P.push(x, -.5, z, x, .5, z); N.push(x*2, 0, z*2, x*2, 0, z*2); }
+  for (let i = 0; i < S; i++) { const a = i * 2; I.push(a, a+1, a+2, a+1, a+3, a+2); }
+  const top = P.length / 3; P.push(0, .5, 0); N.push(0, 1, 0);
+  for (let i = 0; i <= S; i++) { const a = i / S * Math.PI * 2; P.push(Math.cos(a)*.5, .5, Math.sin(a)*.5); N.push(0, 1, 0); }
+  for (let i = 0; i < S; i++) I.push(top, top+2+i, top+1+i);
+  return buf(P, N, I);
+})();
+const QUAD = buf([-1,0,-1, 1,0,-1, 1,0,1, -1,0,1], [0,1,0,0,1,0,0,1,0,0,1,0], [0,1,2,0,2,3]);
+
+/* ---------- the rack (mm, x right, y up, z towards viewer) ---------- */
+const ORANGE = '#F57C00', U = 44;
+const UNITS = [
+  ['Controller', 1, 'vt'], ['Matrix Switcher', 2, 'vt'], ['Switcher', 1, 'vt'], ['Splitter', 1, 'vt'], ['Extender', 1, 'vt'],
+  ['DSP', 1, 'ia'], ['Mixing Amplifier', 2, 'ia'], ['Install Amplifier', 2, 'ia'],
+];
+const GROUP = { vt: ['Video Transport', 'video-transport.html'], ia: ['Install Audio', 'install-audio.html'] };
+const meshes = [];
+const add = (part, geo, c, s, col, o = {}) => meshes.push({ part, geo, c, s, col: hex(col), met: o.m ?? .4, em: o.e ?? 0, rz: o.rz });
+const B = (part, c, s, col, o) => add(part, BOX, c, s, col, o);
+const Cy = (part, c, s, col, o) => add(part, CYL, c, s, col, o);
+const totalU = UNITS.reduce((a, u) => a + u[1], 0), TOP = totalU * U / 2;
+
+// rack frame (part 'rack' never moves)
+for (const x of [-236, 236]) for (const z of [-6, -330]) B('rack', [x, 0, z], [18, totalU * U + 40, 12], '#3A3F4A', { m: .6 });
+for (const y of [TOP + 26, -TOP - 26]) B('rack', [0, y, -168], [490, 12, 350], '#2B2F38', { m: .5 });
+for (let k = 0; k < totalU * 3; k++) for (const x of [-236, 236]) B('rack', [x, TOP - 7 - k * U / 3, 0.5], [6, 4, 1], '#15171C');
+
+const units = [];
+let y = TOP;
+UNITS.forEach(([name, h, g], i) => {
+  const part = 'u' + i, hh = h * U, cy = y - hh / 2; y -= hh;
+  const silver = g === 'ia' && h === 2;
+  const face = silver ? '#C6CBD3' : '#1B1E25', body = '#2A2E36';
+  units.push({ part, name, g, cy, hh });
+  B(part, [0, cy, -152], [440, hh - 2, 300], body, { m: .35 });
+  B(part, [0, cy, 1], [483, hh - 1.5, 4], face, { m: silver ? .9 : .55 });
+  for (const x of [-232, 232]) for (const dy of (h === 2 ? [-22, 22] : [0])) Cy(part, [x, cy + dy, 3.4], [7, 1.2, 7], '#0B0D10', { rz: 1 });
+  const fz = 3.3, accent = (x, yy, w, hgt, col, e = .9) => B(part, [x, cy + yy, fz], [w, hgt, .8], col, { e });
+  switch (name) {
+    case 'Controller':
+      accent(-150, 0, 70, 22, '#0B1F44', .3); accent(-150, 3, 50, 2, '#6FB2FF'); accent(-158, -4, 34, 2, '#6FB2FF');
+      for (let k = 0; k < 8; k++) B(part, [-60 + k * 26, cy, fz], [18, 14, 3], '#8E95A3', { m: .6 });
+      accent(190, 0, 5, 5, ORANGE); break;
+    case 'Matrix Switcher':
+      for (let r = 0; r < 2; r++) for (let k = 0; k < 10; k++) B(part, [-150 + k * 26, cy + 14 - r * 26, fz], [19, 16, 3], (r === 0 && k === 3) || (r === 1 && k === 6) ? ORANGE : '#7F8696', { m: .5, e: (r === 0 && k === 3) || (r === 1 && k === 6) ? .8 : 0 });
+      accent(165, 8, 70, 26, '#0B1F44', .3); accent(165, 12, 52, 2.5, '#6FB2FF'); accent(158, 3, 38, 2.5, '#6FB2FF'); accent(205, -20, 5, 5, '#39D46E'); break;
+    case 'Switcher':
+      for (let k = 0; k < 6; k++) { B(part, [-120 + k * 30, cy, fz], [20, 14, 3], '#7F8696', { m: .5 }); accent(-120 + k * 30, 12, 4, 2.5, k === 2 ? ORANGE : '#39D46E'); }
+      accent(190, 0, 5, 5, '#39D46E'); break;
+    case 'Splitter':
+      for (let k = 0; k < 8; k++) accent(-60 + k * 20, 0, 6, 6, k < 5 ? '#39D46E' : '#2F3540', k < 5 ? .9 : 0);
+      accent(-180, 0, 60, 3, ORANGE, .6); break;
+    case 'Extender':
+      for (let k = 0; k < 2; k++) { B(part, [100 + k * 34, cy, fz], [24, 18, 3], '#0B0D10'); accent(94 + k * 34, 11, 4, 2, '#FFB020'); }
+      for (let k = 0; k < 4; k++) accent(-160 + k * 16, 0, 5, 5, '#39D46E'); break;
+    case 'DSP':
+      for (let k = 0; k < 18; k++) accent(-190 + k * 10, 4, 6.5, 8, k % 6 === 5 ? ORANGE : '#39D46E');
+      accent(60, 0, 90, 22, '#0A1830', .25); accent(50, 3, 60, 2.2, '#5FA2FF'); accent(44, -4, 44, 2.2, '#5FA2FF');
+      Cy(part, [175, cy, 7], [20, 8, 20], '#C9CDD4', { m: .95, rz: 1 }); break;
+    case 'Mixing Amplifier':
+      for (let k = 0; k < 6; k++) Cy(part, [-170 + k * 46, cy + 8, 8], [24, 9, 24], '#20242B', { m: .7, rz: 1 });
+      for (let k = 0; k < 6; k++) accent(-170 + k * 46, -24, 10, 3, k === 0 ? ORANGE : '#39D46E');
+      for (let k = 0; k < 12; k++) B(part, [160, cy + 30 - k * 5.5, fz], [80, 2.2, .6], '#8A909B'); break;
+    case 'Install Amplifier':
+      for (let k = 0; k < 13; k++) B(part, [-40, cy + 32 - k * 5.3, fz], [300, 2.4, .6], '#6E747F');
+      Cy(part, [190, cy + 6, 6], [22, 5, 22], '#15171C', { rz: 1 }); accent(190, -22, 8, 3, '#4FA3FF');
+      accent(-205, 26, 20, 3, ORANGE, .6); break;
+  }
+});
+const ids = units.map(u => u.part);
+
+/* labels */
+const layer = stage.querySelector('.r3-labels');
+const labEls = units.map(u => {
+  const el = document.createElement('a'); el.className = 'r3-lab'; el.href = GROUP[u.g][1]; el.dataset.g = u.g;
+  el.innerHTML = `<i></i><b>${u.name}</b><span>${GROUP[u.g][0]}</span>`; layer.appendChild(el);
+  el.addEventListener('mouseenter', () => hover = u.part); el.addEventListener('mouseleave', () => hover = null);
+  return el;
+});
+/* ---------- picking ---------- */
+let fb, fbTex, fbDepth, fbW = 0, fbH = 0;
+function ensureFB(w, h) {
+  if (w === fbW && h === fbH) return; fbW = w; fbH = h;
+  fb = fb || gl.createFramebuffer(); fbTex = fbTex || gl.createTexture(); fbDepth = fbDepth || gl.createRenderbuffer();
+  gl.bindTexture(gl.TEXTURE_2D, fbTex); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, w, h, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+  gl.bindRenderbuffer(gl.RENDERBUFFER, fbDepth); gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, w, h);
+  gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
+  gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, fbTex, 0);
+  gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, fbDepth);
+  gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+}
+
+
+/* ---------- state ---------- */
+let W = 0, H = 0, dpr = 1, progress = 0, hover = null, mouse = null, mx = 0, my = 0, needPick = false;
+const lift = Object.fromEntries(ids.map(k => [k, 0])), ex = Object.fromEntries(ids.map(k => [k, 0]));
+const steps = [...stage.querySelectorAll('.r3-step')];
+const bar = stage.querySelector('.r3-bar span');
+function resize() { dpr = Math.min(2, devicePixelRatio || 1); W = canvas.clientWidth; H = canvas.clientHeight; canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr); }
+addEventListener('resize', resize); resize();
+function onScroll() { const r = stage.getBoundingClientRect(), total = stage.offsetHeight - innerHeight; progress = Math.min(1, Math.max(0, -r.top / total)); }
+addEventListener('scroll', onScroll, { passive: true }); onScroll();
+canvas.addEventListener('mousemove', e => { const r = canvas.getBoundingClientRect(); mouse = [e.clientX - r.left, e.clientY - r.top]; needPick = true; mx = mouse[0] / W - .5; my = mouse[1] / H - .5; });
+canvas.addEventListener('mouseleave', () => { mouse = null; hover = null; mx = my = 0; canvas.style.cursor = ''; });
+canvas.addEventListener('click', () => { if (hover) location.href = GROUP[units[ids.indexOf(hover)].g][1]; });
+
+const offs = {};
+function modelOf(m) {
+  const o = offs[m.part] || [0, 0, 0], t = [m.c[0] + o[0], m.c[1] + o[1], m.c[2] + o[2]], s = m.s;
+  if (m.rz) return { M: [s[0],0,0,0, 0,0,s[1],0, 0,-s[2],0,0, t[0],t[1],t[2],1], N: [1/s[0],0,0, 0,0,1/s[1], 0,-1/s[2],0] };
+  return { M: [s[0],0,0,0, 0,s[1],0,0, 0,0,s[2],0, t[0],t[1],t[2],1], N: [1/s[0],0,0, 0,1/s[1],0, 0,0,1/s[2]] };
+}
+function bind(p, g) {
+  const a = gl.getAttribLocation(p, 'aP'); gl.bindBuffer(gl.ARRAY_BUFFER, g.p); gl.enableVertexAttribArray(a); gl.vertexAttribPointer(a, 3, gl.FLOAT, false, 0, 0);
+  const n = gl.getAttribLocation(p, 'aN'); if (n >= 0) { gl.bindBuffer(gl.ARRAY_BUFFER, g.nn); gl.enableVertexAttribArray(n); gl.vertexAttribPointer(n, 3, gl.FLOAT, false, 0, 0); }
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, g.i);
+}
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let t0 = performance.now(), last = t0;
+function frame(now) {
+  const dt = Math.min(.05, (now - last) / 1000); last = now;
+  const p = progress, time = (now - t0) / 1000, narrow = W / H < 1;
+  // choreography: video transport units slide out first, then install audio
+  units.forEach((u, i) => {
+    const vi = u.g === 'vt' ? i : i - 5, base = u.g === 'vt' ? .12 : .46;
+    const tgt = sm(p, base + vi * .045, base + vi * .045 + .16);
+    ex[u.part] += (tgt - ex[u.part]) * Math.min(1, dt * 8);
+    lift[u.part] += ((hover === u.part ? 1 : 0) - lift[u.part]) * Math.min(1, dt * 10);
+    const e = ex[u.part];
+    offs[u.part] = [0, (3.5 - i) * (narrow ? 34 : 46) * e, e * (narrow ? 150 : 190) + lift[u.part] * 40];
+  });
+  const open = Math.max(...ids.map(k => ex[k]));
+  const idle = reduce ? 0 : Math.sin(time * .4) * .07 * (1 - sm(p, 0, .12));
+  const yaw = lerp(.62, .82, sm(p, .1, .9)) + idle + mx * .1;
+  const pitch = lerp(.16, .26, sm(p, .1, .5)) + my * .05;
+  const dist = narrow ? 2700 + open * 420 : 1850 + open * 380;
+  const tgtY = narrow ? 360 : 0, shift = narrow ? 0 : .3;
+  const eye = [Math.sin(yaw) * Math.cos(pitch) * dist, tgtY + Math.sin(pitch) * dist, -60 + Math.cos(yaw) * Math.cos(pitch) * dist];
+  const VP = M4.mul(M4.mul([1,0,0,0, 0,1,0,0, 0,0,1,0, shift,0,0,1], M4.persp(.5, W / H, 10, 8000)), M4.look(eye, [0, tgtY, -60], [0,1,0]));
+
+  gl.viewport(0, 0, canvas.width, canvas.height); gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+  gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA); gl.disable(gl.DEPTH_TEST);
+  gl.useProgram(SP); bind(SP, QUAD); gl.uniformMatrix4fv(loc(SP,'uVP'), false, VP);
+  gl.uniform3f(loc(SP,'uS'), 420, -TOP - 34, 320 + open * 90); gl.uniform1f(loc(SP,'uA'), .5);
+  gl.drawElements(gl.TRIANGLES, QUAD.n, gl.UNSIGNED_SHORT, 0);
+  gl.disable(gl.BLEND); gl.enable(gl.DEPTH_TEST);
+  gl.useProgram(P); gl.uniformMatrix4fv(loc(P,'uVP'), false, VP); gl.uniform3fv(loc(P,'uEye'), eye); gl.uniform3fv(loc(P,'uHiC'), hex(ORANGE));
+  let cur = null;
+  for (const m of meshes) {
+    if (cur !== m.geo) { bind(P, m.geo); cur = m.geo; }
+    const { M, N } = modelOf(m);
+    gl.uniformMatrix4fv(loc(P,'uM'), false, M); gl.uniformMatrix3fv(loc(P,'uNM'), false, N);
+    gl.uniform3fv(loc(P,'uC'), m.col); gl.uniform1f(loc(P,'uMet'), m.met); gl.uniform1f(loc(P,'uEm'), m.em); gl.uniform1f(loc(P,'uHi'), lift[m.part] || 0);
+    gl.drawElements(gl.TRIANGLES, m.geo.n, gl.UNSIGNED_SHORT, 0);
+  }
+  if (needPick && mouse && open > .3) {
+    needPick = false;
+    const w = Math.max(1, canvas.width >> 2), h = Math.max(1, canvas.height >> 2); ensureFB(w, h);
+    gl.bindFramebuffer(gl.FRAMEBUFFER, fb); gl.viewport(0, 0, w, h); gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    gl.useProgram(PP); gl.uniformMatrix4fv(loc(PP,'uVP'), false, VP); cur = null;
+    for (const m of meshes) { if (cur !== m.geo) { bind(PP, m.geo); cur = m.geo; }
+      const { M, N } = modelOf(m); gl.uniformMatrix4fv(loc(PP,'uM'), false, M); gl.uniformMatrix3fv(loc(PP,'uNM'), false, N);
+      const k = ids.indexOf(m.part); gl.uniform3f(loc(PP,'uId'), (k + 1) / 16, 0, 0); gl.drawElements(gl.TRIANGLES, m.geo.n, gl.UNSIGNED_SHORT, 0); }
+    const px = new Uint8Array(4); gl.readPixels(Math.floor(mouse[0] * dpr / 4), Math.floor((H - mouse[1]) * dpr / 4), 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px);
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+    const id = Math.round(px[0] / 255 * 16) - 1; hover = id >= 0 && ex[ids[id]] > .5 ? ids[id] : null;
+    canvas.style.cursor = hover ? 'pointer' : '';
+  }
+  const active = p < .42 ? 'vt' : 'ia';
+  units.forEach((u, i) => {
+    const el = labEls[i], o = offs[u.part];
+    const w = [246, u.cy + o[1], 4 + o[2], 1];
+    const c = [0,1,2,3].map(r => VP[r]*w[0] + VP[4+r]*w[1] + VP[8+r]*w[2] + VP[12+r]*w[3]);
+    el.style.transform = `translate(${((c[0]/c[3]*.5+.5)*W).toFixed(1)}px,${((1-(c[1]/c[3]*.5+.5))*H).toFixed(1)}px)`;
+    el.classList.toggle('on', ex[u.part] > .85);
+    el.classList.toggle('dim', u.g !== active && p < .9);
+    el.classList.toggle('hi', hover === u.part);
+  });
+  const s = p < .1 ? 0 : p < .42 ? 1 : 2;
+  steps.forEach((el, i) => el.classList.toggle('on', i === s));
+  if (bar) bar.style.width = (p * 100).toFixed(1) + '%';
+  stage.classList.add('ready');
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+})();
+</script></body></html>
